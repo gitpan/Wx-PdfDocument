@@ -1,0 +1,22 @@
+Changes
+Makefile.PL
+MANIFEST
+PdfDocument.xs
+cpp/pdf_constants.cpp
+lib/Wx/PdfDocument.pm
+README.txt
+samples/20k_c1.txt
+samples/20k_c2.txt
+samples/apple.gif
+samples/countries.txt
+samples/sample1.pl
+samples/sample2.pl
+samples/sample3.pl
+samples/sample4.pl
+samples/smile.jpg
+script/wx_xspp.pl
+t/01_load.t
+typemap
+typemap.xsp
+XS/PdfDocument.xsp
+META.yml                                 Module meta-data (added by MakeMaker)

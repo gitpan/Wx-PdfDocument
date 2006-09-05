@@ -1,0 +1,126 @@
+#############################################################################
+## Name:        ext/pdf/XS/PdfDocument.xsp
+## Purpose:     XS++ for Wx::PdfDocument
+## Author:      Mark Wardell
+## Modified by:
+## Created:     25/01/2006
+## RCS-ID:      $Id: PdfDocument.xsp,v 1.0 2006/01/24 07:02:49 netcon Exp $
+## Copyright:   (c) 2006 Mark Wardell
+## Licence:     This program is free software; you can redistribute it and/or
+##              modify it under the same terms as Perl itself
+#############################################################################
+
+%module{Wx};
+
+%typemap{wxPdfDocument*}{simple};
+%typemap{wxPaperSize}{simple};
+%typemap{wxPdfAlignment}{simple};
+##wxPdfZoom next
+
+%name{Wx::PdfDocument} class wxPdfDocument
+{
+    wxPdfDocument(
+		int orientation = wxPORTRAIT,
+		const wxString &unit = wxString(_T("mm")),
+		wxPaperSize format = wxPAPER_A4
+	);
+    ~wxPdfDocument();
+
+	void AddPage( int orientation = 1 );
+	double GetPageWidth();
+	double GetPageHeight();
+	void Open();
+	void Close();
+	void Header();
+	void Footer();
+	void AliasNbPages( const wxString &alias = wxString(_T("{nb}")) );
+	int PageNo();
+
+#	## we need prototypes for Cell like CellSimple & CellFull )
+#	%name{CellSimple} void Cell(
+#		double w,
+#		double h,
+#		const wxString& txt = wxEmptyString );
+	void Cell(
+		double w,
+		double h,
+		const wxString& txt = wxEmptyString,
+		int border = 0,
+		int ln = 0,
+		int align = 0,
+		int fill = 0 );
+	void MultiCell(
+		double w,
+		double h,
+		const wxString& txt,
+		int border = 0,
+		int align = wxPDF_ALIGN_JUSTIFY,
+		int fill = 0 );
+
+	## we need prototypes for Image like ImageSimple & ImageFull )
+	bool Image( const wxString &file, double x, double y, double w = 0, double h = 0 );
+
+	void SaveAsFile( const wxString& name = wxEmptyString );
+	bool SetFont( const wxString &family, const wxString &style = wxEmptyString, double size = 0 );
+	void SetFontSize( double size );
+
+	void Ln ( double h = -1 );
+	double GetX();
+	void SetX( double x );
+	double GetY();
+	void SetY( double y );
+	void SetXY( double x, double y );
+
+	void SetTitle( const wxString &title );
+	void SetSubject ( const wxString &suject );
+	void SetAuthor ( const wxString &author );
+	void SetKeywords ( const wxString &keywords );
+	void SetCreator ( const wxString &creator );
+
+	##void SetFillColour( const unsigned char grayscale );
+	void SetFillColor( const wxColour &color );
+	void SetDrawColor( const wxColour &color );
+	void SetTextColor( const wxColour &color );
+	%name{SetFillColour} void SetFillColor( const wxColour &color );
+	%name{SetDrawColour} void SetDrawColor( const wxColour &color );
+	%name{SetTextColour} void SetTextColor( const wxColour &color );
+
+	void SetAutoPageBreak( bool automode, double margin = 0 );
+	void SetCompression( bool compress );
+	void SetProtection( int permissions,
+		const wxString &userPassword = wxEmptyString,  
+		const wxString &ownerPassword = wxEmptyString );
+	double GetImageScale();
+	void SetImageScale( double scale );
+	double GetScaleFactor();
+	double GetStringWidth( const wxString &s );
+	void SetLineWidth( double width );
+	# void SetLineStyle
+	# GetLineStyle
+
+	void Line( double x1, double y1, double x2, double y2 );
+	void Rect( double x, double y, double w, double h, int style = wxPDF_STYLE_DRAW );
+	void RoundedRect( double x, double y, double w, double h, double r, int roundCorner = wxPDF_CORNER_ALL, int style = wxPDF_STYLE_DRAW );
+
+	# Methods still to be wrapped
+	# Curve
+	# Ellipse
+	# Circle
+	# Sector
+	# Polygon + variations
+	# Rotate
+	# Text
+	# RotatedText
+	# Write
+	# WriteCell
+};
+
+#%{
+#void
+#wxPdfDocument::SetFillColor( ... )
+#  PPCODE:
+#    BEGIN_OVERLOAD()
+#        MATCH_REDISP( wxPliOvl_n_n_s, SetFillColorGray )
+#        MATCH_REDISP_COUNT_ALLOWMORE( wxPliOvl_n_n_s, SetFillColorWx  )
+#    END_OVERLOAD( Wx::PdfDocument::SetFillColor )
+#%}
