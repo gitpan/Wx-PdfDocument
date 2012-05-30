@@ -10,22 +10,62 @@
 //              modify it under the same terms as Perl itself
 /////////////////////////////////////////////////////////////////////////////
 
-#include <wx/pdfdoc.h>
-#include <wx/cmndata.h>
-#include <wx/print.h>
-
 #define PERL_NO_GET_CONTEXT
 #include "cpp/wxapi.h"
+#include "cpp/constants.h"
+#include "cpp/overload.h"
 #undef THIS
 #undef IsSet
-#pragma warning ( disable: 4702) // unreachable code
+
+#include <wx/pdfdoc.h>
+#include <wx/pdffont.h>
+#include <wx/pdfcolour.h>
+#include <wx/pdflinestyle.h>
+#include <wx/pdfinfo.h>
+#include <wx/pdfshape.h>
+#include <wx/pdflayer.h>
+#include <wx/pdffontmanager.h>
+#include <wx/pdfbarcode.h>
+#include <wx/pdfdc.h>
+#include <wx/pdfprint.h>
+#include <wx/pdfcoonspatchmesh.h>
+
+#include <cpp/ovl_const.h>
+#include <cpp/ovl_const.cpp>
 
 MODULE=Wx__PdfDocument
 
 BOOT:
   INIT_PLI_HELPERS( wx_pli_helpers );
 
-INCLUDE: perl script/wx_xspp.pl -t typemap.xsp XS/PdfDocument.xsp |
+INCLUDE_COMMAND: $^X -I../.. -MExtUtils::XSpp::Cmd -e xspp -- -t typemap.xsp XS/PdfDocument.xsp
+
+INCLUDE_COMMAND: $^X -I../.. -MExtUtils::XSpp::Cmd -e xspp -- -t typemap.xsp XS/PdfShape.xsp
+
+INCLUDE_COMMAND: $^X -I../.. -MExtUtils::XSpp::Cmd -e xspp -- -t typemap.xsp XS/PdfInfo.xsp
+
+INCLUDE_COMMAND: $^X -I../.. -MExtUtils::XSpp::Cmd -e xspp -- -t typemap.xsp XS/PdfLayer.xsp
+
+INCLUDE_COMMAND: $^X -I../.. -MExtUtils::XSpp::Cmd -e xspp -- -t typemap.xsp XS/PdfColour.xsp
+
+INCLUDE_COMMAND: $^X -I../.. -MExtUtils::XSpp::Cmd -e xspp -- -t typemap.xsp XS/PdfLineStyle.xsp
+
+INCLUDE_COMMAND: $^X -I../.. -MExtUtils::XSpp::Cmd -e xspp -- -t typemap.xsp XS/PdfDC.xsp
+
+INCLUDE_COMMAND: $^X -I../.. -MExtUtils::XSpp::Cmd -e xspp -- -t typemap.xsp XS/PdfFont.xsp
+
+INCLUDE_COMMAND: $^X -I../.. -MExtUtils::XSpp::Cmd -e xspp -- -t typemap.xsp XS/PdfFontDescription.xsp
+
+INCLUDE_COMMAND: $^X -I../.. -MExtUtils::XSpp::Cmd -e xspp -- -t typemap.xsp XS/PdfLink.xsp
+
+INCLUDE_COMMAND: $^X -I../.. -MExtUtils::XSpp::Cmd -e xspp -- -t typemap.xsp XS/PdfFontManager.xsp
+
+INCLUDE_COMMAND: $^X -I../.. -MExtUtils::XSpp::Cmd -e xspp -- -t typemap.xsp XS/PdfBarCode.xsp
+
+INCLUDE_COMMAND: $^X -I../.. -MExtUtils::XSpp::Cmd -e xspp -- -t typemap.xsp XS/PdfPrinting.xsp
+
+INCLUDE_COMMAND: $^X -I../.. -MExtUtils::XSpp::Cmd -e xspp -- -t typemap.xsp XS/PdfCoonsPatchMesh.xsp
+
 
 #include "cpp/pdf_constants.cpp"
 

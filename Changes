@@ -1,5 +1,14 @@
 Revision history for Perl extension Wx::PdfDocument.
 
+0.08  Sat May 26 2012
+    - wrap of all relevant classes from current wxPdfDocument svn
+    - Includes wxPdfDC and new wxPrinting framework classes
+    - added Wx::Demo module
+    - distribution now builds and installs wxPdfDocument
+    - moved to Module::Build
+
+0.06 - 0.07 not released
+
 0.04  Tue Sep  5 08:55:12 CET 2005
 	- un-bundled from wxPerl source tree
 	- first release to CPAN

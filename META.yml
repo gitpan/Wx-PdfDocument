@@ -1,11 +1,121 @@
-# http://module-build.sourceforge.net/META-spec.html
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         Wx-PdfDocument
-version:      0.05
-version_from: lib/Wx/PdfDocument.pm
-installdirs:  site
+---
+abstract: 'PDF output for wxWidgets'
+author:
+  - 'Mark Wardell <mwardell@cpan.org>'
+build_requires:
+  Archive::Extract: 0
+  ExtUtils::XSpp: 0.1602
+  LWP::UserAgent: 0
+  Test::More: 0
+  Text::Patch: 1.8
+configure_requires:
+  Module::Build: 0.36
+  perl: 5.008
+dynamic_config: 1
+generated_by: 'Module::Build version 0.4, CPAN::Meta::Converter version 2.112150'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Wx-PdfDocument
+no_index:
+  directory:
+    - src
+    - cpp
+    - inc
+    - myinc
+    - msw
+    - patches
+    - demo
+provides:
+  Wx::DemoModules::wxPdfDocument:
+    file: lib/Wx/DemoModules/wxPdfDocument.pm
+    version: 0.01
+  Wx::DemoModules::wxPdfDocument::CustomPrintOut:
+    file: lib/Wx/DemoModules/wxPdfDocument.pm
+    version: 0
+  Wx::DemoModules::wxPdfDocument::DelegatedPrintout:
+    file: lib/Wx/DemoModules/wxPdfDocument.pm
+    version: 0
+  Wx::PdfBarCodeCreator:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfColour:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfDC:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfDocument:
+    file: lib/Wx/PdfDocument.pm
+    version: 0.08
+  Wx::PdfDocument::Loader:
+    file: lib/Wx/PdfDocument/Loader.pm
+    version: 0.08
+  Wx::PdfFont:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfFontDescription:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfFontManager:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfInfo:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfLayer:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfLayerGroup:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfLayerMembership:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfLineStyle:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfLink:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfOcg:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfPageLink:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfPageSetupDialog:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfPrintData:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfPrintDialog:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfPrintPreview:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfPrintPreviewImpl:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfPrinter:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PdfShape:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
+  Wx::PlPdfDocument:
+    file: lib/Wx/PdfDocument.pm
+    version: 0
 requires:
-    Wx:                            0.19
-
-distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.17
+  Alien::wxWidgets: 0.27
+  Class::Accessor: 0.34
+  Wx: 0.9908
+  perl: 5.008
+resources:
+  homepage: http://code.google.com/p/wxperl-pdfdocument/wiki/Home
+  license: http://dev.perl.org/licenses/
+  repository: http://wxperl-pdfdocument.googlecode.com/svn/
+version: 0.08
