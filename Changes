@@ -1,5 +1,9 @@
 Revision history for Perl extension Wx::PdfDocument.
 
+0.09  Thu May 31 2012
+    - corrected calls to wxThePrintPaperDatabase in demo
+    - use Wx::MimeTypesManager to launch docs in demo
+
 0.08  Sat May 26 2012
     - wrap of all relevant classes from current wxPdfDocument svn
     - Includes wxPdfDC and new wxPrinting framework classes

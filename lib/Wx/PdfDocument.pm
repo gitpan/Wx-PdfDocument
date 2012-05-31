@@ -2,7 +2,7 @@
 # Package       Wx::PdfDocument
 # Description:  Wrapper for wxPdfDocument
 # Created       Sat Apr 21 02:00:26 2012
-# SVN Id        $Id: PdfDocument.pm 172 2012-05-30 16:58:19Z mark.dootson@gmail.com $
+# SVN Id        $Id: PdfDocument.pm 176 2012-05-30 23:14:45Z mark.dootson@gmail.com $
 # Copyright:    Copyright (c) 2006, 2012 Mark Wardell <mwardell@cpan.org>
 # Licence:      This program is free software; you can redistribute it 
 #               and/or modify it under the same terms as Perl itself
@@ -18,7 +18,7 @@ use Wx 0.9908;
 use Wx::Print;
 use Cwd;
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 our $_binpath;
 our $_libpath;

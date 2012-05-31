@@ -26,7 +26,7 @@ Module::Build::PdfDocument::wxpdf_builderclass()->new(
 	requires => {
 		'perl'             => '5.008',
         'Alien::wxWidgets' => '0.27',
-		'Wx'               => '0.9908',
+		'Wx'               => '0.9909',
         'Class::Accessor'  => '0.34',
 	},
 	needs_compiler => 0, # We will be doing our own XS compilation

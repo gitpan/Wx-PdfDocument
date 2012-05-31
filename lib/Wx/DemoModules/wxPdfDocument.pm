@@ -2,7 +2,7 @@
 # Package       Wx::DemoModules::wxPdfDocument
 # Description:  Package Description
 # Created       Tue May 01 21:22:36 2012
-# SVN Id        $Id: wxPdfDocument.pm 172 2012-05-30 16:58:19Z mark.dootson@gmail.com $
+# SVN Id        $Id: wxPdfDocument.pm 177 2012-05-31 02:38:43Z mark.dootson@gmail.com $
 # Copyright:    Copyright (c) 2012 Mark Dootson
 # Licence:      This program is free software; you can redistribute it 
 #               and/or modify it under the same terms as Perl itself
@@ -20,10 +20,11 @@ use Wx::Event qw( EVT_BUTTON );
 use Wx::PdfDocument;
 use Wx::Html;
 use Wx::RichText;
-use Wx qw( :pdfdocument :print );
+use Wx::Print;
+use Wx qw( :pdfdocument :print wxThePrintPaperDatabase );
 use Cwd;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub new {
     my( $class, $parent ) = @_;
@@ -109,7 +110,7 @@ sub OnPageDialogAllButton {
         # pagesetup with dialog values
         $dialogdata = $dialog->GetPageSetupDialogData;
         $printdata  = Wx::PdfPrintData->new($dialogdata->GetPrintData);
-        my $paper = Wx::PrintPaperDatabase::FindPaperTypeById($printdata->GetPaperId);
+        my $paper = wxThePrintPaperDatabase->FindPaperType($printdata->GetPaperId);
         Wx::LogMessage('The selected paper is: %s', $paper->GetName);
         Wx::LogMessage('The selected orientation is: %s',
                        ( $printdata->GetOrientation == wxPORTRAIT )
@@ -137,7 +138,7 @@ sub OnPageDialogMinButton {
         # pagesetup with dialog values
         $dialogdata = $dialog->GetPageSetupDialogData;
         $printdata  = Wx::PdfPrintData->new($dialogdata->GetPrintData);
-        my $paper = Wx::PrintPaperDatabase::FindPaperTypeById($printdata->GetPaperId);
+        my $paper = wxThePrintPaperDatabase->FindPaperType($printdata->GetPaperId);
         Wx::LogMessage('The selected paper is: %s', $paper->GetName);
         Wx::LogMessage('The selected orientation is: %s',
                        ( $printdata->GetOrientation == wxPORTRAIT )
@@ -263,7 +264,7 @@ sub OnRichTextPreview {
     $self->{storerichtextbuffers} = [ $printbuffer, $previewbuffer ];
     
     my $printpreview = Wx::PdfPrintPreview->new( $previewprintout, $printprintout, $printdata);
-    
+    $printpreview->SetZoom(65);
     my $frame = Wx::PreviewFrame->new( $printpreview, $self,
                                      "PDF RichText Printing Preview", [-1, -1], [600, 600] );
     $frame->Initialize();
@@ -359,7 +360,8 @@ sub OnHtmlPreview {
                       $dialogdata->GetMarginBottomRight->x
                       );
 
-    my $printpreview = Wx::PdfPrintPreview->new( $previewprintout, $printprintout, $printdata);    
+    my $printpreview = Wx::PdfPrintPreview->new( $previewprintout, $printprintout, $printdata);
+    $printpreview->SetZoom(65);
     my $frame = Wx::PreviewFrame->new( $printpreview, $self,
                                      "PDF Html Printing Preview", [-1, -1], [600, 600] );
     $frame->Initialize();
@@ -451,7 +453,7 @@ sub OnDelegatedPrint {
                         "Demo RichText PDF Preview",$previewprintout);
     
     my $printpreview = Wx::PdfPrintPreview->new($proxypreview, $proxyprint, $printdata );
-    
+    $printpreview->SetZoom(65);
     my $frame = Wx::PreviewFrame->new( $printpreview, $self,
                                      "PDF RichText Printing Preview", [-1, -1], [600, 600] );
     
@@ -543,7 +545,13 @@ sub OnPrintPDFDocument {
     $demo->run_pdfdemo($filepath);
     
     if( $dolaunch ) {
-        Wx::PdfDocument::LaunchPdfViewer($filepath);
+        my $mtm = Wx::MimeTypesManager->new();
+        if( my $filetype = $mtm->GetFileTypeFromExtension('pdf') ) {
+            my $cmd = $filetype->GetOpenCommand($filepath);
+            Wx::ExecuteCommand($cmd);
+        } else {
+            Wx::LogError('Could not find viewer for PDFs');
+        }
     }
 }
 
@@ -647,7 +655,13 @@ sub OnPrintPDFDC {
     $dc->EndDoc;
     
     if( $dolaunch ) {
-        Wx::PdfDocument::LaunchPdfViewer($filepath);
+        my $mtm = Wx::MimeTypesManager->new();
+        if( my $filetype = $mtm->GetFileTypeFromExtension('pdf') ) {
+            my $cmd = $filetype->GetOpenCommand($filepath);
+            Wx::ExecuteCommand($cmd);
+        } else {
+            Wx::LogError('Could not find viewer for PDFs');
+        }
     }
 }
 
@@ -753,29 +767,6 @@ sub writerichtext {
 
 sub add_to_tags { qw( new misc ) }
 sub title { 'wxPdfDocument' }
-
-
-####################################################
-#
-#package Wx::DemoModules::wxPdfDocument::PreviewFrame;
-#
-####################################################
-#
-#use strict;
-#use warnings;
-#use Wx;
-#use Wx::Print;
-#use base 'Wx::PlPreviewFrame';
-#
-#sub new { shift->SUPER::new( @_ ); }
-#
-#sub Initialize {
-#    $_[0]->SUPER::Initialize;
-#}
-#
-#sub CreateControlBar {
-#    $_[0]->SUPER::CreateControlBar;
-#}
 
 ###################################################
 

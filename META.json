@@ -44,7 +44,7 @@
          "requires" : {
             "Alien::wxWidgets" : "0.27",
             "Class::Accessor" : "0.34",
-            "Wx" : "0.9908",
+            "Wx" : "0.9909",
             "perl" : "5.008"
          }
       }
@@ -52,7 +52,7 @@
    "provides" : {
       "Wx::DemoModules::wxPdfDocument" : {
          "file" : "lib/Wx/DemoModules/wxPdfDocument.pm",
-         "version" : "0.01"
+         "version" : "0.02"
       },
       "Wx::DemoModules::wxPdfDocument::CustomPrintOut" : {
          "file" : "lib/Wx/DemoModules/wxPdfDocument.pm",
@@ -76,11 +76,11 @@
       },
       "Wx::PdfDocument" : {
          "file" : "lib/Wx/PdfDocument.pm",
-         "version" : "0.08"
+         "version" : "0.09"
       },
       "Wx::PdfDocument::Loader" : {
          "file" : "lib/Wx/PdfDocument/Loader.pm",
-         "version" : "0.08"
+         "version" : "0.09"
       },
       "Wx::PdfFont" : {
          "file" : "lib/Wx/PdfDocument.pm",
@@ -169,5 +169,5 @@
          "url" : "http://wxperl-pdfdocument.googlecode.com/svn/"
       }
    },
-   "version" : "0.08"
+   "version" : "0.09"
 }
