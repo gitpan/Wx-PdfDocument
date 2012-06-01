@@ -10,9 +10,9 @@ use Cwd;
 
 our @ISA = qw( Module::Build );
 
-our $wxpdfversion = '0.9.2.1';
+our $wxpdfversion = '0.9.3';
 
-our $VERSION = '0.60';
+our $VERSION = '0.61';
 
 sub wxpdf_builderclass {
 

@@ -18,7 +18,7 @@ package Wx::PdfDocument::Loader;
 use strict;
 use warnings;
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 package
   Wx::PdfDocument;

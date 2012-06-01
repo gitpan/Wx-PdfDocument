@@ -18,7 +18,7 @@ use Wx 0.9908;
 use Wx::Print;
 use Cwd;
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 our $_binpath;
 our $_libpath;
@@ -556,9 +556,9 @@ L<http://wxcode.sourceforge.net/docs/wxpdfdoc/>
 
 =head1 RELEASE NOTES
 
-This 0.08 release patches the wxPdfDocument 0.9.2.1 code with updates from the
-current svn code for wxPdfDocument plus some changes to Windows makefiles to
-allow building in the Perl / wxPerl environment.
+This 0.10 release builds wxPdfDocument 0.9.3 code with minor changes to Windows makefiles to
+allow building in the Perl / wxPerl environment. All applied patches are in the
+patches subfolder of the distribution.
 
 =head1 COPYRIGHT AND LICENSE
 
