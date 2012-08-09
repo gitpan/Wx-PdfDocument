@@ -1,5 +1,8 @@
 Revision history for Perl extension Wx::PdfDocument.
 
+0.11  Thu Aug 9 2012
+    - Latest update to wxPdfDocument fixes GDI memory leak on Windows
+
 0.10  Fri June 1 2012
     - use wxPdfDocument version 0.9.3 source directly
 

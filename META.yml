@@ -12,7 +12,7 @@ configure_requires:
   Module::Build: 0.36
   perl: 5.008
 dynamic_config: 1
-generated_by: 'Module::Build version 0.4, CPAN::Meta::Converter version 2.112150'
+generated_by: 'Module::Build version 0.4001, CPAN::Meta::Converter version 2.120630'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -48,7 +48,7 @@ provides:
     version: 0
   Wx::PdfDocument:
     file: lib/Wx/PdfDocument.pm
-    version: 0.10
+    version: 0.11
   Wx::PdfDocument::Loader:
     file: lib/Wx/PdfDocument/Loader.pm
     version: 0.10
@@ -118,4 +118,4 @@ resources:
   homepage: http://code.google.com/p/wxperl-pdfdocument/wiki/Home
   license: http://dev.perl.org/licenses/
   repository: http://wxperl-pdfdocument.googlecode.com/svn/
-version: 0.10
+version: 0.11

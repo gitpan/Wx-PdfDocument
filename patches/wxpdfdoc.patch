@@ -856,6 +856,15 @@ diff -ruNw -x.svn -x docs wxpdfdoc-0.9.3/build29/makefile.vc wxPdfDoc-copy/build
 diff -ruNw -x.svn -x docs wxpdfdoc-0.9.3/include/wx/pdfdocument.h wxPdfDoc-copy/include/wx/pdfdocument.h
 --- wxpdfdoc-0.9.3/include/wx/pdfdocument.h	2012-05-31 14:22:30.000000000 +0100
 +++ wxPdfDoc-copy/include/wx/pdfdocument.h	2012-05-28 00:19:13.864100000 +0100
+@@ -31,7 +31,7 @@
+ #include "wx/pdflinks.h"
+ #include "wx/pdfproperties.h"
+ 
+-#define wxPDF_PRODUCER       wxT("wxPdfDocument 0.9.1")
++#define wxPDF_PRODUCER       wxT("wxPdfDocument 0.9.3")
+ 
+ #define wxPDF_EPSILON        1e-6
+ 
 @@ -170,6 +170,9 @@
  
    virtual ~wxPdfDocument();
@@ -866,3 +875,26 @@ diff -ruNw -x.svn -x docs wxpdfdoc-0.9.3/include/wx/pdfdocument.h wxPdfDoc-copy/
    /// Set permissions as well as user and owner passwords.
    /**
    * \param permissions flag indicating permissions.
+
+diff -ruNw -x.svn -x docs wxpdfdoc-0.9.3/src/pdffontparsertruetype.cpp wxPdfDoc-copy/src/pdffontparsertruetype.cpp
+--- wxpdfdoc-0.9.3/src/pdffontparsertruetype.cpp	2012/07/02 04:11:08	3037
++++ wxPdfDoc-copy/src/pdffontparsertruetype.cpp	2012/07/03 18:28:25	3038
+@@ -233,8 +233,8 @@
+   wxFillLogFont(&lf, &font);
+ 
+   HDC hdc = CreateCompatibleDC(0);
+-  // TODO: check whether clean up is needed in addition to deleting hdc
+-  /*HFONT oldfont = (HFONT)*/ SelectObject(hdc, CreateFontIndirect(&lf));
++  HFONT hFont = CreateFontIndirect(&lf);
++  /*HFONT oldfont = (HFONT)*/ SelectObject(hdc, hFont);
+ 
+   DWORD fontDataSize;
+   BYTE* fontData;
+@@ -248,6 +248,7 @@
+     delete [] fontData;
+   }
+   DeleteDC(hdc);
++  DeleteObject(hFont);
+ 
+   return fontStream;
+ }

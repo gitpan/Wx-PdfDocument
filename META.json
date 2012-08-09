@@ -4,7 +4,7 @@
       "Mark Wardell <mwardell@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4, CPAN::Meta::Converter version 2.112150",
+   "generated_by" : "Module::Build version 0.4001, CPAN::Meta::Converter version 2.120630",
    "license" : [
       "perl_5"
    ],
@@ -27,10 +27,10 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "Archive::Extract" : 0,
+            "Archive::Extract" : "0",
             "ExtUtils::XSpp" : "0.1602",
-            "LWP::UserAgent" : 0,
-            "Test::More" : 0,
+            "LWP::UserAgent" : "0",
+            "Test::More" : "0",
             "Text::Patch" : "1.8"
          }
       },
@@ -76,7 +76,7 @@
       },
       "Wx::PdfDocument" : {
          "file" : "lib/Wx/PdfDocument.pm",
-         "version" : "0.10"
+         "version" : "0.11"
       },
       "Wx::PdfDocument::Loader" : {
          "file" : "lib/Wx/PdfDocument/Loader.pm",
@@ -169,5 +169,5 @@
          "url" : "http://wxperl-pdfdocument.googlecode.com/svn/"
       }
    },
-   "version" : "0.10"
+   "version" : "0.11"
 }

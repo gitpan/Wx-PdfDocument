@@ -2,7 +2,7 @@
 # Package       Wx::PdfDocument::Loader
 # Description:  Load wxPdfDocument
 # Created       Mon Apr 30 18:42:52 2012
-# SVN Id        $Id: Loader.pm 175 2012-05-30 23:13:45Z mark.dootson@gmail.com $
+# SVN Id        $Id: Loader.pm 179 2012-06-01 15:43:38Z mark.dootson@gmail.com $
 # Copyright:    Copyright (c) 2012  Mark Wardell
 # Licence:      This program is free software; you can redistribute it 
 #               and/or modify it under the same terms as Perl itself
