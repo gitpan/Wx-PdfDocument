@@ -128,6 +128,7 @@ sub wxpdf_build_pdfdocument {
 
 	my @cmd = (
 		'../configure',
+        qq(--disable-dependency-tracking), # allow universal builds
 		qq(CXXFLAGS=\"$cxxflags -DWXPDFDOC_INHERIT_WXOBJECT=1\"),
 		qq(LDFLAGS=\"$ldflags\"),
 		qq(CPPFLAGS=\"$cppflags -DWXPDFDOC_INHERIT_WXOBJECT=1\"),
