@@ -12,7 +12,7 @@ our @ISA = qw( Module::Build );
 
 our $wxpdfversion = '0.9.3';
 
-our $VERSION = '0.61';
+our $VERSION = '0.62';
 
 sub wxpdf_builderclass {
 
@@ -216,16 +216,6 @@ sub build_pdfdoc_library {
 
 sub build_xs {
 	my $self = shift;
-
-	my @cmd;
-	my $cmd;
-
-	my $perl_lib = $self->config('privlibexp');
-	$perl_lib =~ s/\\/\//g;
-	my $perl_arch_lib = $self->config('archlib');
-	$perl_arch_lib =~ s/\\/\//g;
-	my $perl_site_arch = $self->config('sitearch');
-	$perl_site_arch =~ s/\\/\//g;
 
 	my $perltypemap;
 	my $wxtypemap;

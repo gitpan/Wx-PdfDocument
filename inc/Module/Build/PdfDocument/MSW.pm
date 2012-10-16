@@ -64,7 +64,7 @@ sub wxpdf_pdfdocument_symlinks { return (); }
 sub wxpdf_build_pdfdocument {
 	my ( $self, $distdir  ) = @_;
 
-	$self->wxpdf_win32_runpdfmakefile('nmake', 'vc', 'cl', undef);
+	$self->wxpdf_win32_runpdfmakefile('nmake perl', 'vc', 'cl', undef);
 }
 
 sub wxpdf_win32_runpdfmakefile {
@@ -191,7 +191,7 @@ sub wxpdf_build_xs {
 		' /c /FoPdfDocument.obj',
 		'-I.',
 		'-I' . $self->wxpdf_get_wx_include_path,
-		'-I' . $Config{archlib} . '/CORE',
+		'-I' . $Config{archlibexp} . '/CORE',
 		'-I' . $self->wxpdf_libdirectory . '/include',
 		Alien::wxWidgets->include_path,
 		$cflags,

@@ -30,7 +30,7 @@ sub wxpdf_pdfdocument_link {
 
 sub wxpdf_build_pdfdocument {
 	my ( $self ) = @_;
-	$self->wxpdf_win32_runpdfmakefile('mingw32-make', 'gcc', 'g++', ' -shared');
+	$self->wxpdf_win32_runpdfmakefile('mingw32-make perl', 'gcc', 'g++', ' -shared');
 }
 
 sub wxpdf_build_xs {
@@ -51,7 +51,7 @@ sub wxpdf_build_xs {
 		' -c -o PdfDocument.o',
 		'-I.',
 		'-I' . $self->wxpdf_get_wx_include_path,
-		'-I' . $Config{archlib} . '/CORE',
+		'-I' . $Config{archlibexp} . '/CORE',
 		'-I' . $self->wxpdf_libdirectory . '/include',
 		Alien::wxWidgets->include_path,
 		$cflags,

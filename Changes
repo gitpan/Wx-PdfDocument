@@ -1,5 +1,10 @@
 Revision history for Perl extension Wx::PdfDocument.
 
+0.13  Tue Oct 16 2012
+    - wxPdfDocument patches - fixes errors for version 0 fonts
+    - Use expanded config values( e.g. archlib ->archlibexp ) so
+      build against static perl can work
+
 0.12  Tue Aug 28 2012
     - Allow universal build - ppc + i386
 

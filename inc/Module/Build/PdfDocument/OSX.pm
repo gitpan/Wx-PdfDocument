@@ -177,7 +177,7 @@ sub wxpdf_build_xs {
 		' -c',
 		'-I.',
 		'-I' . $self->wxpdf_get_wx_include_path,
-		'-I' . $Config{archlib} . '/CORE',
+		'-I' . $Config{archlibexp} . '/CORE',
 		'-I' . $self->wxpdf_libdirectory . '/include',
 		Alien::wxWidgets->include_path,
 		$cflags,
