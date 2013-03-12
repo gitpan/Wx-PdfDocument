@@ -1,5 +1,8 @@
 Revision history for Perl extension Wx::PdfDocument.
 
+0.1301  Tue Oct 16 2012
+    - Fix build bug for gmake vs mingw32-make on Windows
+    
 0.13  Tue Oct 16 2012
     - wxPdfDocument patches - fixes errors for version 0 fonts
     - Use expanded config values( e.g. archlib ->archlibexp ) so

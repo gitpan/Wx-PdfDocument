@@ -9,6 +9,19 @@ use Config;
 
 our @ISA = qw( Module::Build::PdfDocument::MSW );
 
+sub _wxpdf_get_mingw_make {
+    my $self = shift;
+    return $self->{gccmingwmake} if defined($self->{gccmingwmake});
+    my $makeres = qx(gmake --version 2>&1);
+    if( $? ) {
+        $self->{gccmingwmake} = 'mingw32-make';
+    } else {
+        $self->{gccmingwmake} = 'gmake';
+    }
+    $self->log_info(qq(GCC make is $self->{gccmingwmake}\n));
+    return $self->{gccmingwmake};
+}
+
 sub wxpdf_built_libdir {
 	my $self = shift;
 	return $self->wxpdf_libdirectory . '/lib/gcc_dll';
@@ -30,7 +43,8 @@ sub wxpdf_pdfdocument_link {
 
 sub wxpdf_build_pdfdocument {
 	my ( $self ) = @_;
-	$self->wxpdf_win32_runpdfmakefile('mingw32-make perl', 'gcc', 'g++', ' -shared');
+    my $make = $self->_wxpdf_get_mingw_make;
+	$self->wxpdf_win32_runpdfmakefile(qq($make perl), 'gcc', 'g++', ' -shared');
 }
 
 sub wxpdf_build_xs {

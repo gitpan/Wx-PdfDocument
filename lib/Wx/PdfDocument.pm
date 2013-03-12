@@ -18,7 +18,7 @@ use Wx 0.9908;
 use Wx::Print;
 use Cwd;
 
-our $VERSION = '0.13';
+our $VERSION = '0.1301';
 
 our $_binpath;
 our $_libpath;
