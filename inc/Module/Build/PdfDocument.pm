@@ -10,7 +10,7 @@ use Cwd;
 
 our @ISA = qw( Module::Build );
 
-our $wxpdfversion = '0.9.3';
+our $wxpdfversion = '0.9.4';
 
 our $VERSION = '0.62';
 
@@ -371,7 +371,7 @@ sub wxpdf_get_pdfdocument_source {
 	{		
 		my $patchfile = qq(patches/wxpdfdoc.patch);
 		my @patches;
-		{
+		if(-f $patchfile ){
 			open my $fh, '<', $patchfile or die qq(Could not open $patchfile : $!);
 			binmode($fh);
 			
@@ -395,6 +395,7 @@ sub wxpdf_get_pdfdocument_source {
 			my $sourcefile = $sourcedir . '/' . $patch->[0];
 			my $patchcontent = $patch->[1];
 			my $sourcecontent = '';
+			$self->log_info(qq(Patching $sourcefile ...\n));
             if( -f $sourcefile) {
                 open my $sfh, '<', $sourcefile or die qq(Could not open $sourcefile for read: $!);
                 binmode($sfh);

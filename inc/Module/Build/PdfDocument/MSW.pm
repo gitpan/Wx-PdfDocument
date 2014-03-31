@@ -75,8 +75,8 @@ sub wxpdf_win32_runpdfmakefile {
 	my ( $major, $minor, $release ) = $self->wxpdf_version_split;
 	my $wxshortver = $major . $minor;
 	#my $makefile = qq(makefile${wxshortver}.${compiler});
-    my $makefile = qq(makefile.${compiler});
-	my $builddir = ( $wxshortver eq '28' ) ? 'build' : qq(build${wxshortver});
+        my $makefile = qq(makefile.${compiler});
+	my $builddir = ( $wxshortver eq '28' ) ? 'build' : 'build29';
 	
 	#{
 	#	my $targetfile = $self->wxpdf_libdirectory . qq(/$builddir/$makefile);
@@ -240,6 +240,19 @@ sub wxpdf_link_xs {
 
 	$self->_run_command( \@cmd );
 
+}
+
+sub wxpdf_prebuild_check {
+	my $self = shift;
+	my $alienversion = $Alien::wxWidgets::VERSION;
+	
+	if ( $alienversion < 0.65 ) {
+		# make builtins available
+		# from 0.65 onwards they are installed with Alien
+		system(qq(MOVE /Y mswlibs msw));
+	}
+	
+    return 1;
 }
 
 1;

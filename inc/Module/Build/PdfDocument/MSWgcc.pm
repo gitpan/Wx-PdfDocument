@@ -42,9 +42,9 @@ sub wxpdf_pdfdocument_link {
 }
 
 sub wxpdf_build_pdfdocument {
-	my ( $self ) = @_;
+    my ( $self ) = @_;
     my $make = $self->_wxpdf_get_mingw_make;
-	$self->wxpdf_win32_runpdfmakefile(qq($make perl), 'gcc', 'g++', ' -shared');
+    $self->wxpdf_win32_runpdfmakefile( qq($make perl), 'gcc', 'g++', ' -shared');
 }
 
 sub wxpdf_build_xs {
